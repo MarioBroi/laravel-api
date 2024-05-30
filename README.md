@@ -60,3 +60,12 @@ creare il seeder per il model Technology.
 
 ### Bonus 2:
 aggiungere le operazioni CRUD per il model Technology, in modo da gestire le tecnologie utilizzate nei progetti direttamente dal pannello di amministrazione.
+
+
+
+## Milestone 6
+Aggiungiamo al nostro progetto Laravel una nuovo Api/ProjectController.
+Questo controller risponderà a delle richieste via API e si occuperà di restituire la lista dei progetti presenti nel database in formato json.
+
+## Milestone 7
+Testiamo la chiamata API tramite Postman e assicuriamoci di ricevere i dati correttamente.
