@@ -40,13 +40,8 @@ class ProjectController extends Controller
      */
     public function store(StoreProjectRequest $request)
     {
-        //dd($request->all());
-
         $validated = $request->validated();
-
-        //dd($validated);
         $slug = Str::slug($request->title, '-');
-
         $validated['slug'] = $slug;
 
         //controllo se nella richiesta é presente una immagine, altrimenti skippo questo procedimento
@@ -54,14 +49,10 @@ class ProjectController extends Controller
 
             //recupero in una variabile la project_img
             $image_path = Storage::put('uploads', $validated['project_img']);
-            //dd($validated, $image_path);
 
             //salvo l'url dell'imagine sul validate
             $validated['project_img'] = $image_path;
-            //dd($validated);
         }
-
-        //dd($slug, $validated);
 
         $project = Project::create($validated);
         if ($request->has('technologies')) {
@@ -95,12 +86,9 @@ class ProjectController extends Controller
      */
     public function update(UpdateProjectRequest $request, Project $project)
     {
-
         $validated = $request->validated();
         $slug = Str::slug($request->title, '-');
         $validated['slug'] = $slug;
-
-        //dd($validated);
 
         if ($request->has('project_img')) {
 
@@ -110,11 +98,7 @@ class ProjectController extends Controller
             }
 
             $image_path = Storage::put('uploads', $validated['project_img']);
-
-            //dd($validated, $image_path);
             $validated['project_img'] = $image_path;
-
-            //dd($validated);
         }
 
         $project->update($validated);
