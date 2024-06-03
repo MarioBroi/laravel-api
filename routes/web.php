@@ -21,7 +21,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     /* return view('welcome'); */
     return redirect('login');
-
 });
 
 Route::middleware('auth', 'verified')
@@ -32,10 +31,8 @@ Route::middleware('auth', 'verified')
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
         Route::resource('projects', ProjectController::class)->parameters(['projects' => 'project:slug']);
-        Route::resource('types', TypeController::class)->parameters(['types' => 'type:slug',
-        ]);
+        Route::resource('types', TypeController::class)->parameters(['types' => 'type:slug',]);
         Route::resource('technologies', TechnologyController::class)->parameters(['technologies' => 'technology:slug']);
-
     });
 
 Route::middleware('auth')->group(function () {
@@ -44,4 +41,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
