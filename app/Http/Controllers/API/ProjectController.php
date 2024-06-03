@@ -15,4 +15,20 @@ class ProjectController extends Controller
             'projects' => $projects,
         ]);
     }
+    public function show($id)
+    {
+        $projects = Project::with('user', 'type', 'technologies')->where('id', $id)->first();
+
+        if ($projects) {
+            return response()->json([
+                'success' => true,
+                'response' => $projects,
+            ]);
+        } else {
+            return response()->json([
+                'success' => false,
+                'response' => '404 Sorry nothing found here!',
+            ]);
+        }
+    }
 }
