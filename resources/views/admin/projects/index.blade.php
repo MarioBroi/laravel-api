@@ -37,7 +37,7 @@
                         </div>
                         <!-- /title -->
 
-                        <div class="d-flex gap-3 mb-3">
+                        <div class="d-flex flex-column gap-3 mb-3">
                             @foreach ($technologies as $technology)
                                 <div class="form-check">
                                     <input name="technologies[]" class="form-check-input" type="checkbox"
