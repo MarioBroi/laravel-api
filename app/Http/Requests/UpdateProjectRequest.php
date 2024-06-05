@@ -28,7 +28,7 @@ class UpdateProjectRequest extends FormRequest
             'description' => 'nullable',
             'project_link' => 'nullable',
             'project_github' => 'nullable',
-            'project_img' => 'nullable|max:500',
+            'project_img' => 'nullable|max:1500',
         ];
     }
 }
