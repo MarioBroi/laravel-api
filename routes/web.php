@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\admin\TechnologyController;
 use App\Http\Controllers\Admin\TypeController;
 use App\Http\Controllers\ProfileController;
+use App\Models\Lead;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,6 +35,18 @@ Route::middleware('auth', 'verified')
         Route::resource('types', TypeController::class)->parameters(['types' => 'type:slug',]);
         Route::resource('technologies', TechnologyController::class)->parameters(['technologies' => 'technology:slug']);
     });
+
+Route::get('/mailable', function () {
+    /* $lead = [
+        'name' => 'Mario',
+        'email' => 'mario@test.com',
+        'message' => 'Lorem ipsum dolor'
+    ]; */
+
+    $lead = Lead::find(1);
+
+    return new App\Mail\NewLeadMessageMd($lead);
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
